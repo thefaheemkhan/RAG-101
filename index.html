@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI Engineer Project Bible — From Beginner to Top 1%</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --ink: #0E0F14;
+  --ink2: #1A1C25;
+  --ink3: #252834;
+  --paper: #F5F2EC;
+  --paper2: #EDE9E0;
+  --paper3: #E3DED3;
+  --txt: #1A1C25;
+  --txt2: #4A4E63;
+  --txt3: #8A8FA8;
+  --rule: rgba(26,28,37,0.1);
+  --rule2: rgba(26,28,37,0.18);
+  --red: #C8392B;
+  --red2: #E85D4A;
+  --gold: #B8860B;
+  --gold2: #D4A017;
+  --blue: #1A3C6E;
+  --blue2: #2E5FA3;
+  --green: #1B5E3B;
+  --green2: #2D8A5A;
+  --purple: #4A2080;
+  --purple2: #7048B8;
+  --teal: #0F4C5C;
+  --teal2: #1A7A8A;
+  --sans: 'Outfit', sans-serif;
+  --serif: 'Instrument Serif', serif;
+  --mono: 'DM Mono', monospace;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--txt);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(245,242,236,0.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--rule2);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;height:56px;
+}
+.nav-brand{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:0.14em;color:var(--txt3);text-transform:uppercase;
+  text-decoration:none;
+}
+.nav-filters{display:flex;gap:4px;}
+.nf{
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:5px 12px;border-radius:4px;border:1px solid transparent;
+  cursor:pointer;background:transparent;color:var(--txt3);
+  transition:all 0.15s;
+}
+.nf:hover,.nf.active{
+  background:var(--ink);color:var(--paper);border-color:var(--ink);
+}
+.nf[data-filter="beginner"].active{background:var(--green);border-color:var(--green);}
+.nf[data-filter="intermediate"].active{background:var(--blue);border-color:var(--blue);}
+.nf[data-filter="advanced"].active{background:var(--red);border-color:var(--red);}
+.nf[data-filter="research"].active{background:var(--purple);border-color:var(--purple);}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  padding:8rem 3rem 4rem;
+  border-bottom:1px solid var(--rule2);
+  position:relative;overflow:hidden;
+}
+.hero-bg-num{
+  position:absolute;
+  right:-0.05em;top:50%;transform:translateY(-50%);
+  font-family:var(--serif);font-size:clamp(18rem,30vw,32rem);
+  color:rgba(26,28,37,0.04);
+  line-height:1;pointer-events:none;user-select:none;
+  font-style:italic;
+}
+.hero-eyebrow{
+  font-family:var(--mono);font-size:10px;letter-spacing:0.18em;
+  color:var(--txt3);text-transform:uppercase;margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::before{
+  content:'';display:block;width:32px;height:1px;background:var(--txt3);
+}
+h1{
+  font-family:var(--serif);
+  font-size:clamp(3rem,7vw,7rem);
+  line-height:1.02;letter-spacing:-0.02em;
+  max-width:900px;margin-bottom:1.5rem;
+  font-style:italic;
+}
+h1 em{font-style:normal;color:var(--red);}
+.hero-desc{
+  font-size:1rem;color:var(--txt2);max-width:620px;
+  line-height:1.75;margin-bottom:3rem;font-weight:300;
+}
+.hero-stats{
+  display:flex;gap:3rem;flex-wrap:wrap;
+  border-top:1px solid var(--rule2);padding-top:2rem;
+}
+.hs{text-align:left;}
+.hs-num{
+  font-family:var(--serif);font-size:2.8rem;line-height:1;
+  font-style:italic;color:var(--red);margin-bottom:4px;
+}
+.hs-label{
+  font-family:var(--mono);font-size:10px;letter-spacing:0.12em;
+  color:var(--txt3);text-transform:uppercase;
+}
+
+/* ── SECTION WRAPPER ── */
+.section-wrap{padding:5rem 3rem;}
+.section-wrap+.section-wrap{border-top:1px solid var(--rule2);}
+.section-head{
+  display:flex;align-items:baseline;gap:1.5rem;
+  margin-bottom:3rem;padding-bottom:1.5rem;
+  border-bottom:1px solid var(--rule2);
+}
+.sh-num{
+  font-family:var(--mono);font-size:10px;letter-spacing:0.15em;
+  color:var(--txt3);text-transform:uppercase;min-width:60px;
+}
+.sh-title{
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(1.8rem,3.5vw,3rem);letter-spacing:-0.02em;
+}
+.sh-badge{
+  margin-left:auto;
+  font-family:var(--mono);font-size:9px;letter-spacing:0.12em;
+  text-transform:uppercase;padding:5px 12px;border-radius:3px;
+}
+
+/* ── PROJECT GRID ── */
+.proj-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:1px;
+  border:1px solid var(--rule2);
+  background:var(--rule);
+  border-radius:8px;overflow:hidden;
+}
+.proj-card{
+  background:var(--paper);
+  padding:1.75rem 2rem;
+  transition:background 0.15s;
+  cursor:default;
+  position:relative;
+}
+.proj-card:hover{background:var(--paper2);}
+.proj-card.hidden{display:none;}
+.pc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1rem;}
+.pc-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.pc-tag{
+  font-family:var(--mono);font-size:9px;letter-spacing:0.1em;
+  text-transform:uppercase;padding:3px 8px;border-radius:3px;border:1px solid;
+}
+.tag-beg{color:var(--green);border-color:var(--green);background:rgba(27,94,59,0.07);}
+.tag-int{color:var(--blue);border-color:var(--blue);background:rgba(26,60,110,0.07);}
+.tag-adv{color:var(--red);border-color:var(--red);background:rgba(200,57,43,0.08);}
+.tag-res{color:var(--purple);border-color:var(--purple);background:rgba(74,32,128,0.07);}
+.tag-money{color:var(--gold);border-color:var(--gold);background:rgba(184,134,11,0.08);}
+.pc-num{
+  font-family:var(--mono);font-size:11px;color:var(--txt3);
+  white-space:nowrap;margin-top:2px;
+}
+.pc-title{
+  font-size:1.05rem;font-weight:700;letter-spacing:-0.01em;
+  margin-bottom:0.4rem;line-height:1.3;
+}
+.pc-desc{
+  font-size:13px;color:var(--txt2);line-height:1.65;
+  margin-bottom:1.25rem;font-weight:300;
+}
+.pc-why{
+  font-size:12px;color:var(--txt3);line-height:1.55;
+  padding:0.75rem 1rem;background:var(--paper3);
+  border-left:2px solid var(--rule2);margin-bottom:1.25rem;
+  font-style:italic;
+}
+.pc-stack{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1.1rem;}
+.pc-tech{
+  font-family:var(--mono);font-size:10px;
+  padding:3px 8px;background:var(--ink);color:var(--paper);
+  border-radius:3px;
+}
+.pc-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid var(--rule);padding-top:1rem;
+  gap:0.5rem;flex-wrap:wrap;
+}
+.pc-money{
+  font-family:var(--mono);font-size:10px;letter-spacing:0.08em;
+  color:var(--gold);text-transform:uppercase;
+}
+.pc-time{
+  font-family:var(--mono);font-size:10px;color:var(--txt3);
+  letter-spacing:0.06em;
+}
+.pc-outcome{font-size:11px;color:var(--txt3);font-weight:300;}
+
+/* ── RESEARCH SECTION ── */
+.research-grid{
+  display:flex;flex-direction:column;gap:1px;
+  border:1px solid var(--rule2);border-radius:8px;overflow:hidden;
+  background:var(--rule);
+}
+.rp-card{
+  background:var(--paper);
+  padding:1.75rem 2rem;
+  transition:background 0.15s;
+}
+.rp-card:hover{background:var(--paper2);}
+.rp-top{
+  display:flex;align-items:flex-start;gap:1.5rem;
+  margin-bottom:1rem;
+}
+.rp-idx{
+  font-family:var(--serif);font-style:italic;
+  font-size:2rem;color:var(--rule2);line-height:1;
+  min-width:40px;
+}
+.rp-meta{flex:1;}
+.rp-title{
+  font-size:1rem;font-weight:700;margin-bottom:3px;letter-spacing:-0.01em;
+}
+.rp-cite{
+  font-family:var(--mono);font-size:10px;color:var(--txt3);
+  letter-spacing:0.06em;
+}
+.rp-body{padding-left:calc(40px + 1.5rem);}
+.rp-what{font-size:13px;color:var(--txt2);margin-bottom:0.75rem;line-height:1.65;}
+.rp-build{
+  font-size:12px;padding:0.75rem 1rem;
+  background:var(--paper3);border-left:2px solid var(--purple);
+  margin-bottom:0.85rem;line-height:1.6;color:var(--txt2);
+}
+.rp-build strong{color:var(--purple);font-weight:600;}
+.rp-stack{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:0.85rem;}
+.rp-signal{
+  font-family:var(--mono);font-size:10px;letter-spacing:0.08em;
+  color:var(--purple);text-transform:uppercase;
+}
+
+/* ── TIER LEGEND ── */
+.legend{
+  display:flex;gap:2rem;flex-wrap:wrap;
+  margin-bottom:2rem;
+  padding:1.25rem 1.5rem;
+  background:var(--paper2);border:1px solid var(--rule2);border-radius:6px;
+}
+.lg-item{display:flex;align-items:center;gap:8px;}
+.lg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.lg-label{font-family:var(--mono);font-size:10px;color:var(--txt3);letter-spacing:0.08em;text-transform:uppercase;}
+
+/* ── FOOTER ── */
+footer{
+  border-top:2px solid var(--ink);
+  padding:3rem;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+}
+.ft-brand{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--txt3);}
+footer p{font-family:var(--mono);font-size:10px;color:var(--txt3);letter-spacing:0.1em;text-transform:uppercase;}
+
+@media(max-width:768px){
+  nav{padding:0 1rem;}
+  .nav-filters{gap:2px;}
+  .nf{padding:4px 8px;font-size:9px;}
+  #hero,
+  .section-wrap{padding-left:1.25rem;padding-right:1.25rem;}
+  .proj-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:2rem;}
+  footer{padding:2rem 1.25rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">AI Project Bible 2026</a>
+  <div class="nav-filters">
+    <button class="nf active" data-filter="all" onclick="filterProjects('all')">All</button>
+    <button class="nf" data-filter="beginner" onclick="filterProjects('beginner')">Beginner</button>
+    <button class="nf" data-filter="intermediate" onclick="filterProjects('intermediate')">Intermediate</button>
+    <button class="nf" data-filter="advanced" onclick="filterProjects('advanced')">Advanced</button>
+    <button class="nf" data-filter="research" onclick="filterProjects('research')">Research</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-num">42</div>
+  <div class="hero-eyebrow">AI Engineer Project Bible · 2026</div>
+  <h1>Build things<br/><em>companies</em><br/>already need.</h1>
+  <p class="hero-desc">
+    42 practical projects — from your first deployed chatbot to full research reimplementations.
+    Every project is monetizable, teaches a real skill, and signals something specific to employers.
+    Sorted by difficulty. Tied to papers where relevant.
+  </p>
+  <div class="hero-stats">
+    <div class="hs"><div class="hs-num">42</div><div class="hs-label">Projects Total</div></div>
+    <div class="hs"><div class="hs-num">12</div><div class="hs-label">Research Papers</div></div>
+    <div class="hs"><div class="hs-num">6</div><div class="hs-label">Industry Verticals</div></div>
+    <div class="hs"><div class="hs-num">$0</div><div class="hs-label">Excuses Accepted</div></div>
+  </div>
+</section>
+
+<!-- SECTION 1: BEGINNER -->
+<section class="section-wrap" id="beginner-section">
+  <div class="section-head">
+    <span class="sh-num">01 —</span>
+    <h2 class="sh-title">Foundation Projects</h2>
+    <span class="sh-badge tag-beg">Beginner · 2–4 weeks each</span>
+  </div>
+
+  <div class="legend">
+    <div class="lg-item"><div class="lg-dot" style="background:var(--green)"></div><span class="lg-label">Beginner</span></div>
+    <div class="lg-item"><div class="lg-dot" style="background:var(--blue)"></div><span class="lg-label">Intermediate</span></div>
+    <div class="lg-item"><div class="lg-dot" style="background:var(--red)"></div><span class="lg-label">Advanced</span></div>
+    <div class="lg-item"><div class="lg-dot" style="background:var(--purple)"></div><span class="lg-label">Research</span></div>
+    <div class="lg-item"><div class="lg-dot" style="background:var(--gold)"></div><span class="lg-label">Monetizable</span></div>
+  </div>
+
+  <div class="proj-grid">
+
+    <div class="proj-card" data-level="beginner">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-beg">Beginner</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-01</span>
+      </div>
+      <div class="pc-title">Document Q&amp;A Chatbot (RAG over your own PDFs)</div>
+      <div class="pc-desc">Upload any PDF, ask questions, get cited answers. Think "ChatPDF" but you built it and control it. Works for legal docs, contracts, manuals.</div>
+      <div class="pc-why">Every SMB has documents they can't search. This is a real SaaS product. Law firms, HR teams, and consultants pay for this today.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">LangChain</span><span class="pc-tech">ChromaDB</span><span class="pc-tech">Streamlit</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$29–99/mo SaaS · Freelance $500–2k</span>
+        <span class="pc-time">2–3 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="beginner">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-beg">Beginner</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-02</span>
+      </div>
+      <div class="pc-title">AI Customer Support Bot with Escalation</div>
+      <div class="pc-desc">A support bot trained on your FAQ, product docs, and past tickets. Knows when to escalate to a human. Tracks what it can't answer.</div>
+      <div class="pc-why">Every e-commerce store and SaaS product needs this. The escalation logic and "I don't know" tracking is what separates a real product from a toy.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">FastAPI</span><span class="pc-tech">Claude API</span><span class="pc-tech">Pinecone</span><span class="pc-tech">Slack/Webhook</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$199–499/mo per client · Agency play</span>
+        <span class="pc-time">2–3 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="beginner">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-beg">Beginner</span></div>
+        <span class="pc-num">P-03</span>
+      </div>
+      <div class="pc-title">Meeting Transcription + Action Items Extractor</div>
+      <div class="pc-desc">Paste or upload a meeting transcript. Get structured summary, decisions made, action items with owners, and open questions. Exports to Notion/Slack.</div>
+      <div class="pc-why">Shows you can handle structured output engineering — one of the most in-demand practical LLM skills. Also genuinely useful to demonstrate to interviewers.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Whisper</span><span class="pc-tech">Claude API</span><span class="pc-tech">Pydantic</span><span class="pc-tech">Notion API</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">Internal tool / B2B pilot</span>
+        <span class="pc-time">1–2 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="beginner">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-beg">Beginner</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-04</span>
+      </div>
+      <div class="pc-title">Resume + Job Description Match Scorer</div>
+      <div class="pc-desc">Upload a resume and paste a JD. Get a fit score, gap analysis, suggested rewrites, and keywords to add. Batch mode for 50+ JDs at once.</div>
+      <div class="pc-why">Recruiting and career coaching market. Batch mode + API makes it B2B. Outplacement firms, recruiters, and bootcamps pay for this.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">PyPDF2</span><span class="pc-tech">FastAPI</span><span class="pc-tech">React</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$9–29/mo consumer · $500/mo B2B bulk</span>
+        <span class="pc-time">2 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="beginner">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-beg">Beginner</span></div>
+        <span class="pc-num">P-05</span>
+      </div>
+      <div class="pc-title">LLM Cost &amp; Latency Benchmarking Dashboard</div>
+      <div class="pc-desc">Run identical prompts across Claude, GPT-4, Gemini, Llama. Measure tokens/sec, cost per 1k tokens, quality scores. Live dashboard with filters.</div>
+      <div class="pc-why">Signals eval engineering skills. Interviewers love seeing this — it shows you think about production costs, not just "does it work." Publish the benchmarks publicly for SEO.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Multiple APIs</span><span class="pc-tech">Plotly Dash</span><span class="pc-tech">SQLite</span><span class="pc-tech">GitHub Actions</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">Open source → consulting leads</span>
+        <span class="pc-time">2 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="beginner">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-beg">Beginner</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-06</span>
+      </div>
+      <div class="pc-title">AI Email Responder (Gmail + Tone Control)</div>
+      <div class="pc-desc">Connect to Gmail. Classify incoming emails by urgency and type. Draft responses in your tone. One-click send. Works with your contact history as context.</div>
+      <div class="pc-why">Real workflow automation for executives and solopreneurs. Tone matching requires context engineering — a core skill to demonstrate.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Gmail API</span><span class="pc-tech">Claude API</span><span class="pc-tech">OAuth2</span><span class="pc-tech">Flask</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$19/mo consumer · White-label B2B</span>
+        <span class="pc-time">2–3 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="beginner">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-beg">Beginner</span></div>
+        <span class="pc-num">P-07</span>
+      </div>
+      <div class="pc-title">Prompt Evaluation Harness (Your Own PromptFoo)</div>
+      <div class="pc-desc">Build a CLI tool that runs a test suite of prompts against an LLM, scores outputs on custom criteria (factual, format, tone), and diffs results across model versions.</div>
+      <div class="pc-why">This IS the job. Any team running LLMs in prod needs this. Building it from scratch shows you understand why evals matter, not just how to use a library.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Typer CLI</span><span class="pc-tech">Claude API</span><span class="pc-tech">YAML configs</span><span class="pc-tech">Rich</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">Open source credibility project</span>
+        <span class="pc-time">2–3 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="beginner">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-beg">Beginner</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-08</span>
+      </div>
+      <div class="pc-title">AI SEO Content Brief Generator</div>
+      <div class="pc-desc">Input a keyword. Scrape top 10 SERPs. Analyze structure, headings, word count. Generate a content brief with outline, entities to cover, questions to answer.</div>
+      <div class="pc-why">Content agencies pay $50–200 per manual brief. Automate that. Real business with clear ROI. Teaches web scraping + LLM synthesis pipeline.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">BeautifulSoup</span><span class="pc-tech">SerpAPI</span><span class="pc-tech">Claude API</span><span class="pc-tech">FastAPI</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$49–199/mo · Agency white-label</span>
+        <span class="pc-time">2 weeks</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 2: INTERMEDIATE -->
+<section class="section-wrap" id="intermediate-section">
+  <div class="section-head">
+    <span class="sh-num">02 —</span>
+    <h2 class="sh-title">Production-Grade Projects</h2>
+    <span class="sh-badge tag-int">Intermediate · 4–8 weeks each</span>
+  </div>
+
+  <div class="proj-grid">
+
+    <div class="proj-card" data-level="intermediate">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-int">Intermediate</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-09</span>
+      </div>
+      <div class="pc-title">Multi-Source Research Agent</div>
+      <div class="pc-desc">Agent that takes a research question, searches web + arxiv + PubMed, deduplicates sources, synthesizes findings, and produces a cited report with confidence scores.</div>
+      <div class="pc-why">Demonstrates the full agent loop — planning, tool use, source evaluation, synthesis. Sellable to consulting firms, law firms, pharma. A working demo gets attention.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">Tavily Search</span><span class="pc-tech">ArXiv API</span><span class="pc-tech">LangGraph</span><span class="pc-tech">FastAPI</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$99–499/mo per team · Consulting</span>
+        <span class="pc-time">4–5 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="intermediate">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-int">Intermediate</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-10</span>
+      </div>
+      <div class="pc-title">AI Code Review Bot (GitHub Actions Integration)</div>
+      <div class="pc-desc">GitHub Action that triggers on every PR. Reviews code for bugs, security issues, style violations, and complexity. Comments inline. Learns from approvals over time.</div>
+      <div class="pc-why">Every engineering team wants this. GitHub Actions integration is the key — it fits existing workflow. Sell as a GitHub App. Teaching moment: real prompt injection surface area.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">GitHub API</span><span class="pc-tech">Claude API</span><span class="pc-tech">GitHub Actions</span><span class="pc-tech">Docker</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$29–199/mo per repo · $0 OSS tier</span>
+        <span class="pc-time">4–6 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="intermediate">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-int">Intermediate</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-11</span>
+      </div>
+      <div class="pc-title">Legal Contract Analyzer &amp; Risk Flagging</div>
+      <div class="pc-desc">Upload any contract. Extract key clauses, flag unusual or risky terms, compare against standard templates, summarize obligations by party. Export redline suggestions.</div>
+      <div class="pc-why">NDA review alone is a $500–2k/hr lawyer task. Startups and SMBs desperately need affordable contract review. Hybrid search over legal clause embeddings is the technical core.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">LangChain</span><span class="pc-tech">pgvector</span><span class="pc-tech">FastAPI</span><span class="pc-tech">React</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$199–999/mo · Law firm white-label</span>
+        <span class="pc-time">5–7 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="intermediate">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-int">Intermediate</span></div>
+        <span class="pc-num">P-12</span>
+      </div>
+      <div class="pc-title">RAG Evaluation Pipeline with RAGAS + Custom Metrics</div>
+      <div class="pc-desc">Build a full eval pipeline: generate test Q&amp;A from your corpus, run retrieval, score with RAGAS (faithfulness, context recall, answer relevancy), track regressions in CI/CD.</div>
+      <div class="pc-why">This is the project that gets you hired as a senior AI engineer. Most teams have RAG. Almost none have evals. Showing this in an interview ends the technical bar.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">RAGAS</span><span class="pc-tech">LangChain</span><span class="pc-tech">Pinecone</span><span class="pc-tech">GitHub Actions</span><span class="pc-tech">MLflow</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">Career signal — gets you hired</span>
+        <span class="pc-time">4–5 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="intermediate">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-int">Intermediate</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-13</span>
+      </div>
+      <div class="pc-title">E-commerce Product Description Generator at Scale</div>
+      <div class="pc-desc">Input: product specs CSV. Output: SEO-optimized descriptions, bullet points, A/B variants, translated to 5 languages. Batch 10k products with quality scoring per output.</div>
+      <div class="pc-why">Shopify merchants, Amazon sellers, manufacturing companies all have this problem. The batch + quality scoring at scale is the differentiator over a simple prompt call.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API (Batch)</span><span class="pc-tech">Celery</span><span class="pc-tech">Redis</span><span class="pc-tech">FastAPI</span><span class="pc-tech">Postgres</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$0.10–0.50 per product · Agency model</span>
+        <span class="pc-time">4–5 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="intermediate">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-int">Intermediate</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-14</span>
+      </div>
+      <div class="pc-title">HR Policy Q&amp;A Bot with Source Citations + Audit Log</div>
+      <div class="pc-desc">Ingests employee handbook, HR policies, benefits docs. Employees ask questions. Bot answers with policy citations. Logs every Q&amp;A for HR audit. Escalates when unsure.</div>
+      <div class="pc-why">HRIS vendors charge $50k+/year for this. Mid-market companies (200–2000 employees) are underserved. The audit log is what makes this enterprise-ready.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">Weaviate</span><span class="pc-tech">FastAPI</span><span class="pc-tech">Postgres</span><span class="pc-tech">Slack SDK</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$500–5k/mo per company</span>
+        <span class="pc-time">5–6 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="intermediate">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-int">Intermediate</span></div>
+        <span class="pc-num">P-15</span>
+      </div>
+      <div class="pc-title">Structured Data Extraction Pipeline (Invoices, Receipts, Forms)</div>
+      <div class="pc-desc">Upload any document — invoice, receipt, form, medical record. Extract structured JSON with 98%+ accuracy. Handle tables, handwriting, multiple layouts.</div>
+      <div class="pc-why">Accounts payable automation alone is a billion-dollar market. Vision + structured output is the technical skill. Teaches you multimodal document AI — critical for enterprise AI.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude Vision</span><span class="pc-tech">Pydantic</span><span class="pc-tech">FastAPI</span><span class="pc-tech">S3</span><span class="pc-tech">Postgres</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$0.05–0.20/doc · ERP integration play</span>
+        <span class="pc-time">4–5 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="intermediate">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-int">Intermediate</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-16</span>
+      </div>
+      <div class="pc-title">AI Sales Call Analyzer (Transcription + Coaching)</div>
+      <div class="pc-desc">Upload sales call recordings. Transcribe with speaker diarization. Score against sales framework (MEDDIC, SPIN). Extract objections, next steps, coaching feedback per rep.</div>
+      <div class="pc-why">Sales coaching software is $50k+/yr enterprise. This competes on price and AI quality. Every B2B sales team needs it. Revenue intelligence is a hot space in 2026.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Whisper</span><span class="pc-tech">Claude API</span><span class="pc-tech">pyannote</span><span class="pc-tech">FastAPI</span><span class="pc-tech">React</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$99–499/mo per team</span>
+        <span class="pc-time">5–7 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="intermediate">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-int">Intermediate</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-17</span>
+      </div>
+      <div class="pc-title">Knowledge Base Auto-Updater from Slack/Confluence</div>
+      <div class="pc-desc">Monitor Slack channels and Confluence pages. When something new is discussed or decided, auto-draft knowledge base updates, flag gaps, remove outdated entries.</div>
+      <div class="pc-why">Documentation rot is universal. This solves it automatically. Teaches real-time pipeline design, webhook processing, and knowledge graph maintenance.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Slack Events API</span><span class="pc-tech">Confluence API</span><span class="pc-tech">Claude API</span><span class="pc-tech">Celery</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$299–999/mo per workspace</span>
+        <span class="pc-time">5–6 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="intermediate">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-int">Intermediate</span></div>
+        <span class="pc-num">P-18</span>
+      </div>
+      <div class="pc-title">Local LLM Deployment with OpenAI-Compatible API</div>
+      <div class="pc-desc">Deploy Llama 3 or Mistral locally using vLLM. Expose an OpenAI-compatible REST API. Add prompt caching, rate limiting, token counting, and a usage dashboard.</div>
+      <div class="pc-why">Data-sensitive companies (healthcare, legal, finance) cannot use cloud APIs. Building this proves you can handle on-prem AI deployments — a premium consulting use case.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">vLLM</span><span class="pc-tech">FastAPI</span><span class="pc-tech">Docker</span><span class="pc-tech">Prometheus</span><span class="pc-tech">Grafana</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">Consulting: $5–15k deployment</span>
+        <span class="pc-time">4–6 weeks</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 3: ADVANCED -->
+<section class="section-wrap" id="advanced-section">
+  <div class="section-head">
+    <span class="sh-num">03 —</span>
+    <h2 class="sh-title">Advanced System Projects</h2>
+    <span class="sh-badge tag-adv">Advanced · 6–16 weeks each</span>
+  </div>
+
+  <div class="proj-grid">
+
+    <div class="proj-card" data-level="advanced">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-adv">Advanced</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-19</span>
+      </div>
+      <div class="pc-title">Multi-Agent Workflow Engine (LangGraph / Custom)</div>
+      <div class="pc-desc">Build a general-purpose multi-agent engine. Agents for research, writing, coding, fact-checking, critique. Orchestrator assigns tasks, checks results, retries on failure. Human checkpoints configurable.</div>
+      <div class="pc-why">This is the core of every AI product company right now. Understanding orchestration patterns, failure modes, and inter-agent communication is what senior AI engineers are paid for.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">LangGraph</span><span class="pc-tech">Claude API</span><span class="pc-tech">Redis</span><span class="pc-tech">Postgres</span><span class="pc-tech">FastAPI</span><span class="pc-tech">Temporal</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">B2B platform $1k–10k/mo · VC-fundable</span>
+        <span class="pc-time">8–12 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="advanced">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-adv">Advanced</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-20</span>
+      </div>
+      <div class="pc-title">Domain-Specific Fine-Tuned Model (Medical / Legal / Finance)</div>
+      <div class="pc-desc">Fine-tune Llama 3 or Mistral 7B on domain-specific data using QLoRA. Build eval harness comparing fine-tuned vs base vs GPT-4. Deploy adapter with A/B testing. Write up the results.</div>
+      <div class="pc-why">Proves you can go below the API layer. Medical, legal, and finance verticals have specialized vocabulary and reasoning patterns that base models fail at. Domain specialists + AI = rare and expensive.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Hugging Face</span><span class="pc-tech">QLoRA</span><span class="pc-tech">unsloth</span><span class="pc-tech">RAGAS</span><span class="pc-tech">vLLM</span><span class="pc-tech">W&amp;B</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">Sell the adapter · Vertical SaaS play</span>
+        <span class="pc-time">8–10 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="advanced">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-adv">Advanced</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-21</span>
+      </div>
+      <div class="pc-title">Real-Time Voice AI Agent (Sub-800ms Latency)</div>
+      <div class="pc-desc">End-to-end voice agent: Whisper STT → LLM reasoning → ElevenLabs TTS. Sub-800ms perceived latency via streaming. Add persona, memory of past calls, tool access.</div>
+      <div class="pc-why">Voice AI is the next UI wave. Phone agents for appointment booking, customer service, and surveys are replacing traditional IVR. Latency is the hard technical problem.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Whisper</span><span class="pc-tech">Claude API</span><span class="pc-tech">ElevenLabs</span><span class="pc-tech">Pipecat</span><span class="pc-tech">WebSockets</span><span class="pc-tech">FastAPI</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$0.10/min · $500–2k/mo per client</span>
+        <span class="pc-time">8–12 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="advanced">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-adv">Advanced</span></div>
+        <span class="pc-num">P-22</span>
+      </div>
+      <div class="pc-title">Hallucination Detection &amp; Guardrails System</div>
+      <div class="pc-desc">Build a system that detects hallucinations in LLM output by cross-referencing source documents, runs factual consistency checks, and applies configurable guardrails before output is shown to users.</div>
+      <div class="pc-why">AI safety/reliability is the #1 blocker for enterprise adoption. Building a working hallucination detector is a research-adjacent skill that signals serious engineering depth.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">NLI models</span><span class="pc-tech">Claude API</span><span class="pc-tech">BLEURT</span><span class="pc-tech">Prometheus</span><span class="pc-tech">FastAPI</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">Enterprise middleware · Safety layer SaaS</span>
+        <span class="pc-time">8–10 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="advanced">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-adv">Advanced</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-23</span>
+      </div>
+      <div class="pc-title">Autonomous Coding Agent (GitHub Issue → PR)</div>
+      <div class="pc-desc">Agent reads GitHub issues, writes code, runs tests, fixes failures, opens a PR with explanation. Handles simple bugs and feature additions. Human reviews the PR.</div>
+      <div class="pc-why">This is literally what GitHub Copilot Workspace, Devin, and Claude Code are. Building your own version teaches you agent architecture at its hardest — real code execution, error recovery.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">GitHub API</span><span class="pc-tech">Docker (sandboxed exec)</span><span class="pc-tech">LangGraph</span><span class="pc-tech">pytest</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">OSS → consulting · $1–5k/mo per team</span>
+        <span class="pc-time">10–14 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="advanced">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-adv">Advanced</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-24</span>
+      </div>
+      <div class="pc-title">AI-Powered BI Dashboard (Natural Language → SQL → Chart)</div>
+      <div class="pc-desc">Connect to any Postgres/MySQL DB. Ask "Show me revenue by region last quarter." Get SQL, chart, and plain-English explanation. Learns your schema over time. Flags suspicious queries.</div>
+      <div class="pc-why">Text-to-SQL is one of the hottest LLM application areas. Every BI tool is adding this. Building your own proves you understand the schema injection, disambiguation, and SQL safety problems.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">SQLAlchemy</span><span class="pc-tech">Plotly</span><span class="pc-tech">FastAPI</span><span class="pc-tech">React</span><span class="pc-tech">pgvector</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$299–2k/mo per company</span>
+        <span class="pc-time">8–12 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="advanced">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-adv">Advanced</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-25</span>
+      </div>
+      <div class="pc-title">Personalized AI Tutor with Adaptive Learning</div>
+      <div class="pc-desc">Tutoring system that builds a knowledge model of the student, identifies gaps, generates targeted questions, adjusts difficulty, tracks mastery over time. For any subject domain.</div>
+      <div class="pc-why">EdTech is a massive market. Adaptive learning systems (like Khanmigo) are extremely hard to build well. The memory architecture — tracking per-concept mastery — is the technical challenge here.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">Postgres</span><span class="pc-tech">Knowledge graph</span><span class="pc-tech">FastAPI</span><span class="pc-tech">React</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$29/mo consumer · $5k/mo school license</span>
+        <span class="pc-time">10–14 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="advanced">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-adv">Advanced</span></div>
+        <span class="pc-num">P-26</span>
+      </div>
+      <div class="pc-title">Production LLMOps Platform (Monitoring + Tracing)</div>
+      <div class="pc-desc">Self-hosted LLMOps dashboard: log every LLM call with latency, cost, prompt, output. Trace multi-step chains. Alert on regressions. Compare prompts A/B. Replay failed calls.</div>
+      <div class="pc-why">Langfuse and Helicone exist but building this yourself shows you understand the whole observability stack. Companies with internal models need self-hosted solutions for data privacy.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">OpenTelemetry</span><span class="pc-tech">ClickHouse</span><span class="pc-tech">FastAPI</span><span class="pc-tech">React</span><span class="pc-tech">Docker</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">Open source → enterprise support deals</span>
+        <span class="pc-time">10–14 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="advanced">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-adv">Advanced</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-27</span>
+      </div>
+      <div class="pc-title">Synthetic Training Data Generator with Quality Filtering</div>
+      <div class="pc-desc">Given a task and a few examples, generate thousands of high-quality training examples. Auto-filter with LLM-as-judge. Output in any fine-tuning format. Dedup and diversity checks.</div>
+      <div class="pc-why">Data is the bottleneck for every fine-tuning project. A pipeline that generates + validates synthetic data is directly monetizable to any team doing model training.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">Sentence-transformers</span><span class="pc-tech">Pandas</span><span class="pc-tech">FastAPI</span><span class="pc-tech">MinIO</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$0.001/example at scale · MLOps tool</span>
+        <span class="pc-time">6–8 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="advanced">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-adv">Advanced</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-28</span>
+      </div>
+      <div class="pc-title">AI Due Diligence Tool for Investors (Company Research Agent)</div>
+      <div class="pc-desc">Input a company name. Agent pulls Crunchbase, LinkedIn, news, filings, reviews, patents, GitHub activity. Produces structured DD report: team, market, competition, risks, red flags.</div>
+      <div class="pc-why">VC analysts spend 40+ hours on early DD. This compresses it to 2 hours of validation. VCs, PE firms, and M&amp;A teams pay $5k–50k for comprehensive DD reports.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">LangGraph</span><span class="pc-tech">Claude API</span><span class="pc-tech">Crunchbase API</span><span class="pc-tech">SerpAPI</span><span class="pc-tech">Postgres</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$500–5k per report · $2k/mo subscription</span>
+        <span class="pc-time">10–14 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="advanced">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-adv">Advanced</span><span class="pc-tag tag-money">$$ Monetizable</span></div>
+        <span class="pc-num">P-29</span>
+      </div>
+      <div class="pc-title">Multimodal Product Catalog AI (Vision + Search + Rec)</div>
+      <div class="pc-desc">Upload product images. Auto-generate titles, descriptions, tags using vision. Build semantic search over visual + text embeddings. Add "similar products" and "complete the look" recommendations.</div>
+      <div class="pc-why">E-commerce companies with 10k+ SKUs have a catalog management nightmare. Vision + multimodal search is a concrete, deployable solution with clear ROI.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude Vision</span><span class="pc-tech">Weaviate</span><span class="pc-tech">CLIP embeddings</span><span class="pc-tech">FastAPI</span><span class="pc-tech">React</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$0.01/product + $999/mo SaaS</span>
+        <span class="pc-time">8–10 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="advanced">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-adv">Advanced</span></div>
+        <span class="pc-num">P-30</span>
+      </div>
+      <div class="pc-title">GraphRAG: Knowledge Graph-Augmented Retrieval System</div>
+      <div class="pc-desc">Build a retrieval system where entities and relationships are extracted into a knowledge graph (Neo4j). Queries traverse the graph + vector search. Compare quality vs naive RAG with eval suite.</div>
+      <div class="pc-why">GraphRAG is Microsoft's published approach and represents the frontier of production RAG. Building and benchmarking it shows you're tracking the state-of-the-art, not just using last year's patterns.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Neo4j</span><span class="pc-tech">LangChain</span><span class="pc-tech">Claude API</span><span class="pc-tech">Pinecone</span><span class="pc-tech">RAGAS</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">Research portfolio + consulting</span>
+        <span class="pc-time">8–10 weeks</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 4: RESEARCH PAPERS -->
+<section class="section-wrap" id="research-section">
+  <div class="section-head">
+    <span class="sh-num">04 —</span>
+    <h2 class="sh-title">Research Reimplementations</h2>
+    <span class="sh-badge tag-res">Research · Proof of Deep Engineering</span>
+  </div>
+  <p style="color:var(--txt2);font-size:14px;max-width:680px;margin-bottom:2.5rem;font-weight:300;line-height:1.75">
+    Each of these involves reading the original paper, implementing the core contribution, building something usable on top of it, and writing a blog post explaining what you learned. This combination — paper + implementation + product + writeup — is the research portfolio signal that opens doors to AI labs and frontier teams.
+  </p>
+
+  <div class="research-grid">
+
+    <div class="rp-card" data-level="research">
+      <div class="rp-top">
+        <div class="rp-idx">01</div>
+        <div class="rp-meta">
+          <div class="rp-title">RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval</div>
+          <div class="rp-cite">Sarthi et al., Stanford · 2024 · arxiv:2401.18059</div>
+        </div>
+      </div>
+      <div class="rp-body">
+        <div class="rp-what">Standard RAG chunks documents linearly. RAPTOR clusters + recursively summarizes chunks into a tree — enabling queries at multiple abstraction levels. Dramatically outperforms naive RAG on multi-hop questions.</div>
+        <div class="rp-build"><strong>Build on top:</strong> Implement RAPTOR indexing over a large document corpus (legal cases, academic papers, product manuals). Compare retrieval quality with standard RAG using RAGAS. Add a UI showing the tree structure. Write a blog post with benchmarks.</div>
+        <div class="rp-stack"><span class="pc-tech">Python</span><span class="pc-tech">UMAP</span><span class="pc-tech">GMM clustering</span><span class="pc-tech">Claude API</span><span class="pc-tech">ChromaDB</span><span class="pc-tech">RAGAS</span></div>
+        <div class="rp-signal">Signal: RAG depth + research implementation</div>
+      </div>
+    </div>
+
+    <div class="rp-card" data-level="research">
+      <div class="rp-top">
+        <div class="rp-idx">02</div>
+        <div class="rp-meta">
+          <div class="rp-title">Self-RAG: Learning to Retrieve, Generate, and Critique</div>
+          <div class="rp-cite">Asai et al., UW · 2023 · arxiv:2310.11511</div>
+        </div>
+      </div>
+      <div class="rp-body">
+        <div class="rp-what">Instead of always retrieving, Self-RAG trains the model to decide when to retrieve and to critique its own outputs using special reflection tokens. Outperforms standard RAG by large margins on factual tasks.</div>
+        <div class="rp-build"><strong>Build on top:</strong> Replicate the inference loop (retrieval decision + critique tokens) using prompt engineering with a strong base model. Apply to a medical QA task. Measure hallucination rate vs standard RAG. Ship as a demo.</div>
+        <div class="rp-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">Pinecone</span><span class="pc-tech">BioASQ dataset</span><span class="pc-tech">RAGAS</span></div>
+        <div class="rp-signal">Signal: Agentic RAG + self-critique patterns</div>
+      </div>
+    </div>
+
+    <div class="rp-card" data-level="research">
+      <div class="rp-top">
+        <div class="rp-idx">03</div>
+        <div class="rp-meta">
+          <div class="rp-title">HyDE: Hypothetical Document Embeddings for Dense Retrieval</div>
+          <div class="rp-cite">Gao et al., CMU · 2022 · arxiv:2212.10496</div>
+        </div>
+      </div>
+      <div class="rp-body">
+        <div class="rp-what">Instead of embedding the query directly, generate a hypothetical answer first, embed that, and use it for retrieval. Bridges the gap between query and document embedding spaces — especially for sparse queries.</div>
+        <div class="rp-build"><strong>Build on top:</strong> Implement HyDE retrieval and compare vs standard embedding retrieval on 3 datasets. Add it as a toggle in a RAG API so users can A/B test. Benchmark latency tradeoff vs quality gain.</div>
+        <div class="rp-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">SentenceTransformers</span><span class="pc-tech">FAISS</span><span class="pc-tech">BEIR benchmark</span></div>
+        <div class="rp-signal">Signal: Retrieval engineering depth</div>
+      </div>
+    </div>
+
+    <div class="rp-card" data-level="research">
+      <div class="rp-top">
+        <div class="rp-idx">04</div>
+        <div class="rp-meta">
+          <div class="rp-title">ReAct: Synergizing Reasoning and Acting in Language Models</div>
+          <div class="rp-cite">Yao et al., Princeton · 2022 · arxiv:2210.03629</div>
+        </div>
+      </div>
+      <div class="rp-body">
+        <div class="rp-what">ReAct alternates between reasoning traces ("Thought:") and external actions ("Action:") in a single prompt loop. It's the foundational paper behind most modern agent frameworks including LangChain's agent executor.</div>
+        <div class="rp-build"><strong>Build on top:</strong> Implement ReAct from scratch (no LangChain). Apply to a real tool-using task (web search + calculator + code execution). Compare against Chain-of-Thought without actions. Deploy as a demo showing the trace.</div>
+        <div class="rp-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">Tavily</span><span class="pc-tech">Raw prompting</span><span class="pc-tech">FastAPI</span></div>
+        <div class="rp-signal">Signal: Agent architecture from first principles</div>
+      </div>
+    </div>
+
+    <div class="rp-card" data-level="research">
+      <div class="rp-top">
+        <div class="rp-idx">05</div>
+        <div class="rp-meta">
+          <div class="rp-title">Constitutional AI: Harmlessness from AI Feedback</div>
+          <div class="rp-cite">Anthropic · 2022 · arxiv:2212.08073</div>
+        </div>
+      </div>
+      <div class="rp-body">
+        <div class="rp-what">CAI trains models to be helpful and harmless using a "constitution" of principles. The model critiques and revises its own outputs against these principles — removing the need for human labelers to flag harmful content.</div>
+        <div class="rp-build"><strong>Build on top:</strong> Implement a mini-CAI pipeline: write a constitution, have a model generate responses, critique against the constitution, revise. Apply to a content moderation task for a real domain. Ship an API.</div>
+        <div class="rp-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">Custom constitution YAML</span><span class="pc-tech">FastAPI</span><span class="pc-tech">Eval suite</span></div>
+        <div class="rp-signal">Signal: AI safety + RLHF alignment concepts</div>
+      </div>
+    </div>
+
+    <div class="rp-card" data-level="research">
+      <div class="rp-top">
+        <div class="rp-idx">06</div>
+        <div class="rp-meta">
+          <div class="rp-title">LoRA: Low-Rank Adaptation of Large Language Models</div>
+          <div class="rp-cite">Hu et al., Microsoft · 2021 · arxiv:2106.09685</div>
+        </div>
+      </div>
+      <div class="rp-body">
+        <div class="rp-what">LoRA freezes pretrained model weights and injects trainable rank decomposition matrices — reducing fine-tuning parameters by 10,000x with no inference latency penalty. This paper is how almost all fine-tuning is done today.</div>
+        <div class="rp-build"><strong>Build on top:</strong> Fine-tune a 7B model on a domain-specific dataset using LoRA (Hugging Face PEFT). Write a blog post explaining the math (rank decomposition, why it works). Benchmark: base vs LoRA vs full fine-tune on your eval set.</div>
+        <div class="rp-stack"><span class="pc-tech">Python</span><span class="pc-tech">PEFT</span><span class="pc-tech">Transformers</span><span class="pc-tech">W&amp;B</span><span class="pc-tech">A100 / Colab</span><span class="pc-tech">RAGAS</span></div>
+        <div class="rp-signal">Signal: Model training depth — rare and valued</div>
+      </div>
+    </div>
+
+    <div class="rp-card" data-level="research">
+      <div class="rp-top">
+        <div class="rp-idx">07</div>
+        <div class="rp-meta">
+          <div class="rp-title">Attention Is All You Need (Transformer from scratch)</div>
+          <div class="rp-cite">Vaswani et al., Google · 2017 · arxiv:1706.03762</div>
+        </div>
+      </div>
+      <div class="rp-body">
+        <div class="rp-what">The paper that created modern AI. Multi-head self-attention, positional encoding, encoder-decoder architecture. Every LLM you use is built on this. Reading and implementing this is a rite of passage.</div>
+        <div class="rp-build"><strong>Build on top:</strong> Implement a small transformer in PyTorch from scratch (following Karpathy's nanoGPT approach). Train on a small text dataset. Write an annotated explanation of every component. Publish to GitHub with a demo.</div>
+        <div class="rp-stack"><span class="pc-tech">Python</span><span class="pc-tech">PyTorch</span><span class="pc-tech">NumPy</span><span class="pc-tech">Matplotlib</span><span class="pc-tech">GPU (Colab)</span></div>
+        <div class="rp-signal">Signal: Architecture fundamentals — research credibility</div>
+      </div>
+    </div>
+
+    <div class="rp-card" data-level="research">
+      <div class="rp-top">
+        <div class="rp-idx">08</div>
+        <div class="rp-meta">
+          <div class="rp-title">RAGAS: Automated Evaluation of Retrieval Augmented Generation</div>
+          <div class="rp-cite">Es et al. · 2023 · arxiv:2309.15217</div>
+        </div>
+      </div>
+      <div class="rp-body">
+        <div class="rp-what">RAGAS defines four key metrics for RAG evaluation: faithfulness, answer relevancy, context precision, context recall. It uses LLMs to evaluate LLMs — removing the need for human annotations in eval pipelines.</div>
+        <div class="rp-build"><strong>Build on top:</strong> Implement the four RAGAS metrics from scratch (without the library) to prove you understand them. Apply to your own RAG project. Then extend with a 5th custom metric for your domain. Write up the methodology.</div>
+        <div class="rp-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">Custom metrics</span><span class="pc-tech">Pandas</span><span class="pc-tech">Plotly</span></div>
+        <div class="rp-signal">Signal: Evals expertise — the most valued AI skill</div>
+      </div>
+    </div>
+
+    <div class="rp-card" data-level="research">
+      <div class="rp-top">
+        <div class="rp-idx">09</div>
+        <div class="rp-meta">
+          <div class="rp-title">Chain-of-Thought Prompting Elicits Reasoning in LLMs</div>
+          <div class="rp-cite">Wei et al., Google · 2022 · arxiv:2201.11903</div>
+        </div>
+      </div>
+      <div class="rp-body">
+        <div class="rp-what">Shows that providing step-by-step reasoning examples in prompts dramatically improves LLM performance on complex reasoning tasks. Foundation for everything from zero-shot CoT to tree-of-thought approaches.</div>
+        <div class="rp-build"><strong>Build on top:</strong> Implement and benchmark zero-shot CoT, few-shot CoT, and Tree-of-Thoughts on a hard reasoning task (GSM8K math, LSAT). Build a prompt engineering playground where users can see reasoning quality change with each technique.</div>
+        <div class="rp-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">GSM8K dataset</span><span class="pc-tech">Streamlit</span><span class="pc-tech">Pandas</span></div>
+        <div class="rp-signal">Signal: Prompt engineering at research depth</div>
+      </div>
+    </div>
+
+    <div class="rp-card" data-level="research">
+      <div class="rp-top">
+        <div class="rp-idx">10</div>
+        <div class="rp-meta">
+          <div class="rp-title">Toolformer: Language Models Can Teach Themselves to Use Tools</div>
+          <div class="rp-cite">Schick et al., Meta · 2023 · arxiv:2302.04761</div>
+        </div>
+      </div>
+      <div class="rp-body">
+        <div class="rp-what">Toolformer teaches LLMs to decide when and how to call APIs (calculator, search, calendar) by self-supervising on when tool calls improve prediction. It's the conceptual ancestor of all function-calling APIs.</div>
+        <div class="rp-build"><strong>Build on top:</strong> Implement the Toolformer data generation pipeline (self-supervised tool annotation). Apply to 3 tools. Compare vs standard function-calling in accuracy and tool selection precision. Publish the annotated dataset.</div>
+        <div class="rp-stack"><span class="pc-tech">Python</span><span class="pc-tech">Hugging Face</span><span class="pc-tech">Custom tools</span><span class="pc-tech">Pandas</span><span class="pc-tech">Claude API</span></div>
+        <div class="rp-signal">Signal: Tool use + agent foundations</div>
+      </div>
+    </div>
+
+    <div class="rp-card" data-level="research">
+      <div class="rp-top">
+        <div class="rp-idx">11</div>
+        <div class="rp-meta">
+          <div class="rp-title">Mixture of Experts (MoE): From Dense to Sparse Models</div>
+          <div class="rp-cite">Shazeer et al., Google · 2017 + Mixtral 2024 · arxiv:2401.04088</div>
+        </div>
+      </div>
+      <div class="rp-body">
+        <div class="rp-what">MoE routes each token to only a subset of "expert" feed-forward networks, enabling massive parameter counts with constant compute per token. Mixtral, DeepSeek, and GPT-4 all use this architecture.</div>
+        <div class="rp-build"><strong>Build on top:</strong> Implement a small MoE transformer layer in PyTorch. Train a tiny MoE language model and compare perplexity and compute vs dense equivalent. Visualize which experts activate for different token types.</div>
+        <div class="rp-stack"><span class="pc-tech">Python</span><span class="pc-tech">PyTorch</span><span class="pc-tech">Matplotlib</span><span class="pc-tech">Weights &amp; Biases</span><span class="pc-tech">GPU</span></div>
+        <div class="rp-signal">Signal: Architecture research — frontier-level understanding</div>
+      </div>
+    </div>
+
+    <div class="rp-card" data-level="research">
+      <div class="rp-top">
+        <div class="rp-idx">12</div>
+        <div class="rp-meta">
+          <div class="rp-title">Sparse Priming Representations (SPR) for LLM Memory Compression</div>
+          <div class="rp-cite">David Shapiro · 2023 · GitHub: daveshap/SparsePrimingRepresentations</div>
+        </div>
+      </div>
+      <div class="rp-body">
+        <div class="rp-what">SPR compresses large amounts of information into dense, semantically rich bullet points that efficiently prime LLMs. Effectively a lossy compression format designed specifically for LLM context windows.</div>
+        <div class="rp-build"><strong>Build on top:</strong> Build a long-term memory system for AI agents using SPR compression. Compress past conversations into SPR format, store in a vector DB, retrieve and reconstruct for new sessions. Measure token savings vs retrieval quality.</div>
+        <div class="rp-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">Pinecone</span><span class="pc-tech">Custom compression</span><span class="pc-tech">FastAPI</span></div>
+        <div class="rp-signal">Signal: Memory architecture + context engineering depth</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 5: INDUSTRY VERTICALS -->
+<section class="section-wrap" id="verticals-section">
+  <div class="section-head">
+    <span class="sh-num">05 —</span>
+    <h2 class="sh-title">Pick Your Industry Vertical</h2>
+  </div>
+  <p style="color:var(--txt2);font-size:14px;max-width:680px;margin-bottom:2.5rem;font-weight:300;line-height:1.75">
+    Given you have prior industry experience — this is your biggest unfair advantage. An AI engineer who actually understands the domain problem is worth 3x a generalist. Pick one vertical and go deep.
+  </p>
+
+  <div class="proj-grid">
+
+    <div class="proj-card" data-level="intermediate">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-int">Vertical</span><span class="pc-tag tag-money">$$ High Value</span></div>
+        <span class="pc-num">V-01</span>
+      </div>
+      <div class="pc-title">Automotive: AI Parts Catalog + Fitment Intelligence</div>
+      <div class="pc-desc">Natural language search over parts catalogs. "What fits a 2019 Toyota Camry 2.5L?" Returns compatible parts with confidence, supplier options, and install instructions. Cross-reference multiple catalogs.</div>
+      <div class="pc-why">Given your OSS Motors / OSS Car Care background — you have the domain knowledge. Auto parts e-commerce is $70B. Fitment is the hardest search problem in the space.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">pgvector</span><span class="pc-tech">ACES/PIES data</span><span class="pc-tech">FastAPI</span><span class="pc-tech">React</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$500–5k/mo per dealer · Your domain edge</span>
+        <span class="pc-time">6–8 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="intermediate">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-int">Vertical</span><span class="pc-tag tag-money">$$ High Value</span></div>
+        <span class="pc-num">V-02</span>
+      </div>
+      <div class="pc-title">E-Commerce: AI Amazon Listing Optimizer + PPC Analyzer</div>
+      <div class="pc-desc">Input ASIN or product. Scrape current listing, competitor listings, search terms. Generate optimized title, bullets, A+ content. Analyze PPC bids vs search volume. Track listing score over time.</div>
+      <div class="pc-why">OSS Car Care gives you seller experience. Amazon seller tools market is $1B+. Sellers pay $200–2k/mo for optimization tools. You know what actually matters.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">Jungle Scout API</span><span class="pc-tech">SP-API</span><span class="pc-tech">FastAPI</span><span class="pc-tech">React</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$99–499/mo per seller account</span>
+        <span class="pc-time">6–8 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="advanced">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-adv">Vertical</span><span class="pc-tag tag-money">$$ High Value</span></div>
+        <span class="pc-num">V-03</span>
+      </div>
+      <div class="pc-title">Enigmax HiggsField MVP: AI Research OS</div>
+      <div class="pc-desc">Vertical AI OS for researchers and knowledge workers. Ingest papers, notes, books. Ask cross-document questions. Auto-build knowledge graph of concepts and relationships. Track open questions. Export to reports.</div>
+      <div class="pc-why">This IS your Enigmax thesis. Build it as a real product, not a demo. The first version with 10 paying researchers will teach you more than 6 months of planning. Start here.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude API</span><span class="pc-tech">Neo4j</span><span class="pc-tech">Weaviate</span><span class="pc-tech">FastAPI</span><span class="pc-tech">React</span><span class="pc-tech">RAGAS</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$49–199/mo · Your actual startup</span>
+        <span class="pc-time">10–16 weeks</span>
+      </div>
+    </div>
+
+    <div class="proj-card" data-level="intermediate">
+      <div class="pc-top">
+        <div class="pc-tags"><span class="pc-tag tag-int">Vertical</span><span class="pc-tag tag-money">$$ High Value</span></div>
+        <span class="pc-num">V-04</span>
+      </div>
+      <div class="pc-title">Manufacturing: QA Defect Detection + Root Cause AI</div>
+      <div class="pc-desc">Vision model flags defects in product images. LLM analyzes defect patterns against production parameters to suggest root causes. Tracks defect rate trends. Generates shift reports automatically.</div>
+      <div class="pc-why">Manufacturing quality AI is massively underserved outside Tier 1 auto. Vision + structured reporting is practical with current models. A single 10% defect reduction for a mid-size plant is worth millions.</div>
+      <div class="pc-stack"><span class="pc-tech">Python</span><span class="pc-tech">Claude Vision</span><span class="pc-tech">YOLOv8</span><span class="pc-tech">FastAPI</span><span class="pc-tech">Postgres</span><span class="pc-tech">Grafana</span></div>
+      <div class="pc-bottom">
+        <span class="pc-money">$2k–10k/mo per production line</span>
+        <span class="pc-time">8–10 weeks</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-brand">AI Project Bible</div>
+  <p>Build things that already have buyers. Ship before perfect. Eval everything.</p>
+</footer>
+
+<script>
+function filterProjects(level) {
+  document.querySelectorAll('.nf').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.nf[data-filter="${level}"]`).classList.add('active');
+
+  const allCards = document.querySelectorAll('.proj-card, .rp-card');
+  if (level === 'all') {
+    allCards.forEach(c => c.classList.remove('hidden'));
+  } else {
+    allCards.forEach(c => {
+      c.classList.toggle('hidden', c.dataset.level !== level);
+    });
+  }
+
+  // Show/hide section headers based on visible content
+  document.querySelectorAll('.section-wrap').forEach(sec => {
+    const cards = sec.querySelectorAll('.proj-card:not(.hidden), .rp-card:not(.hidden)');
+    sec.style.display = (cards.length === 0 && level !== 'all') ? 'none' : '';
+  });
+}
+</script>
+</body>
+</html>
