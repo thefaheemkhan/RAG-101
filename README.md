@@ -7,6 +7,7 @@
 # 🌐 Live Website
 
 **Website:** [https://ai-projects-roadmap.netlify.app/](https://ai-projects-roadmap.netlify.app/)
+**Website:** https://ai-hirable-projects.netlify.app/#
 
 ---
 
