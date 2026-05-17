@@ -1,4 +1,4 @@
-# 🚀 AI Engineer Projects Roadmap
+# 🚀 AI Engineer Projects & Job Roadmap
 
 > A project-first roadmap designed to help developers build real-world AI engineering skills and gain an unfair advantage in AI Engineer roles.
 
