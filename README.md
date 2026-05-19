@@ -9,6 +9,11 @@
 **Website:** [https://ai-projects-roadmap.netlify.app/](https://ai-projects-roadmap.netlify.app/)
 **Website:** https://ai-hirable-projects.netlify.app/#
 
+Topics:
+1. LLMs
+2. Agents
+3. LLM Finetunning
+
 ---
 
 # 📖 About The Project 
