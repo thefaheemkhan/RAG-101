@@ -4,6 +4,10 @@
 > 42 practical projects — from your first deployed chatbot to full research reimplementations.  
 > Every project is monetizable, teaches a real skill, and signals something specific to employers.  
 > Sorted by difficulty. Tied to papers where relevant.
+>
+> Link: https://ai-projects-roadmap.netlify.app/
+>
+> Link: https://ai-hirable-projects.netlify.app/
 
 ---
 
