@@ -1,4 +1,4 @@
-# 🧠 AI Engineer Project Bible — 2026
+# 🧠 AI Engineer Project Bible
 ### *Build things companies already need.*
 
 > 42 practical projects — from your first deployed chatbot to full research reimplementations.  
