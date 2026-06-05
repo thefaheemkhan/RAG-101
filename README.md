@@ -1,1 +1,1 @@
-LLM Project series
+LLM Project Directory
