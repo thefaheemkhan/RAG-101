@@ -1,2 +1,1 @@
- LLM Project Directory Rag
-
+# RAG (Retrieval Augmented Generation)
