@@ -12,7 +12,7 @@
 [What is RAG?](#-what-is-rag) • [Architecture](#-architecture) • [Quickstart](#-quickstart) • [Deep Dives](#-deep-dives) • [Evaluation](#-evaluation) • [Failure Modes](#-failure-modes--debugging) • [Interview Questions](#-interview-questions) • [Papers](#-papers)
 
 </div> 
-
+ 
 ---
 
 ## 📖 About
